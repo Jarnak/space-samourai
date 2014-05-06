@@ -17,7 +17,7 @@ public class WrenchLauncher : MonoBehaviour {
 	void FixedUpdate () 
     {
       
-        vToPlyr = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z );
+        vToPlyr = new Vector3(target.transform.position.x - transform.position.x, 0.2f, (target.transform.position.z + 0.2f) - transform.position.z );
         
     if (transform.position.x > target.transform.position.x )
     {

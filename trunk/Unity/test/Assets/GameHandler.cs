@@ -52,7 +52,8 @@ public class GameHandler : MonoBehaviour
 
     private int deadWindowWidth = 400;
 
-    private int deadWindowHeight = 280;
+    private int deadWindowHeight = 140;
+	 
 
 
 
@@ -64,27 +65,32 @@ public class GameHandler : MonoBehaviour
     void Update()
     {   
 		if (launched == true) 
-        {
-			if (Input.GetMouseButtonDown (1)) 
-            {
-			    myHudHandler.healthDown (100);
+        {	
+			if (Input.GetKeyDown(KeyCode.Escape) && onPause == true)
+			{
+				Time.timeScale = 1f;
+				onPause = false;
 			}
-        
+			if (Input.GetKeyDown(KeyCode.Escape) && onPause == false)
+			{
+				onPause = true;
+				Time.timeScale = 0f;
+
+			}
+
+			
+		
 			if (myHudHandler.getHealth () == 0) 
             {	
 				isDead = true;
 			}
 
             
-			if (isDead == true || onPause == true) 
+			if (isDead == true) 
             {
-                    Time.timeScale = 0f;
-					Debug.Log("pause");
+				Time.timeScale = 0f;
             }
-            if (isDead == false || onPause == false) {
-                    Time.timeScale = 1f;
-                         
-            }
+
         }
     }
 
@@ -95,16 +101,27 @@ public class GameHandler : MonoBehaviour
         GUILayout.Label("Score :" + myHudHandler.getScore().ToString());
         if (GUILayout.Button("Rejouer", GUILayout.Height(buttonHeight)))
         {	
-
-            Destroy(currentGame);
-            currentGame = (GameObject) Instantiate(game);
-			myHudHandler = GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>();
+			GameObject.FindGameObjectWithTag("Player").SendMessage("resetGame");
+			myHudHandler.setScore(0);
+			myHudHandler.setHealth(100);
+			Time.timeScale=1f;
 			isDead = false;
-
-
         }
 
     }
+
+	void pauseWindow(int windowID)
+	{
+		GUILayout.Space(15);
+		GUILayout.Label("Jeu en pause");
+		GUILayout.Label("Score actuel :" + myHudHandler.getScore().ToString());
+		if (GUILayout.Button("Reprendre", GUILayout.Height(buttonHeight)))
+		{	
+			onPause = false;
+			Time.timeScale = 1f;
+		}
+		
+	}
 
     void inputChoiceWindow(int windowID)
     {
@@ -129,7 +146,9 @@ public class GameHandler : MonoBehaviour
 
             if (GUILayout.Button("Jouer sans Android", GUILayout.Height(buttonHeight)))
             {
-                iWantToPlayWithoutAndroid = true;
+                
+
+				iWantToPlayWithoutAndroid = true;
                 launched = true;
                 currentGame = (GameObject)Instantiate(game);
 				myHudHandler = GameObject.FindGameObjectWithTag ("HUD").GetComponent<hudHandler>();
@@ -191,6 +210,16 @@ public class GameHandler : MonoBehaviour
             deadWindowRect = GUILayout.Window(0, deadWindowRect, deadWindow,
                                                      "Perdu!");
         }
+		if (onPause == true && launched == true)
+		{
+			leftIndent = (Screen.width / 2 - deadWindowWidth / 2);
+			topIndent = (Screen.height / 2 - deadWindowHeight / 2);
+			deadWindowRect = new Rect(leftIndent, topIndent, deadWindowWidth,
+			                          deadWindowHeight);
+			
+			deadWindowRect = GUILayout.Window(0, deadWindowRect, pauseWindow,
+			                                  "Pause!");
+		}
 
     }
 

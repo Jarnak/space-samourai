@@ -44,4 +44,14 @@ public class hudHandler : MonoBehaviour {
     {
         return intScore;
     }
+
+	public void setHealth(int i)
+	{
+		intHealth = i;
+	}
+	public void setScore(int i)
+	{
+		intScore = i;
+	}
+
 }

@@ -47,4 +47,15 @@ public class RandomSpawn : MonoBehaviour {
 	void Update () {
 
 	}
+
+	void OnDisable()
+	{
+		foreach (Transform child in this.transform) 
+		{
+			if (child.tag == "ennemy")
+			{
+				Destroy(child.gameObject);
+			}
+		}
+	}
 }
