@@ -5,11 +5,12 @@ public class PlayerHandler : MonoBehaviour {
 private hudHandler hud = null;
 public AudioClip hurtedSound;
 public AudioClip shielded;
+private CapsuleCollider capsule;
 
-	// Use this for initialization
+
 	void Start () 
 	{
-		
+		capsule = (CapsuleCollider)GetComponent(typeof(CapsuleCollider));
 	}
 	
 	// Update is called once per frame
@@ -23,6 +24,26 @@ public AudioClip shielded;
 		
 			}
 		}
+
+		if (hud.getInvincible ()) 
+		{
+			capsule.radius = 1.6f;
+		} 
+		else 
+		{
+			capsule.radius = 0.4f;
+		}
+	}
+
+	void OnTriggerEnter (Collider coll)
+	{
+		if (hud.getInvincible () && coll.tag == "ennemy") 
+		{
+			audio.clip = shielded;
+			audio.Play();
+			Destroy (coll.gameObject);
+			hud.pointInc(50);
+		}
 	}
 
 	public void hurted()
@@ -30,7 +51,7 @@ public AudioClip shielded;
 		if (!hud.getInvincible ()) 
 		{
 			hud.healthDown(10);
-			hud.loseEnergy (3);
+			hud.loseEnergy (8);
 			audio.clip = hurtedSound;
 			audio.Play ();
 		}
@@ -38,6 +59,7 @@ public AudioClip shielded;
 				 
 		else 
 		{
+			hud.pointInc(10);
 			audio.clip = shielded;
 			audio.Play ();
 		}

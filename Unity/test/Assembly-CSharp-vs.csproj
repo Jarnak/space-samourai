@@ -51,6 +51,7 @@
      <Compile Include="Assets\GameHandler.cs" />
      <Compile Include="Assets\Map Pooler\MapPool.cs" />
      <Compile Include="Assets\Map Pooler\MapPoolTester.cs" />
+     <Compile Include="Assets\Player\ShieldUp.cs" />
      <Compile Include="Assets\Player\TileController.cs" />
      <Compile Include="Assets\PlayerHandler.cs" />
      <Compile Include="Assets\RandomSpawn.cs" />

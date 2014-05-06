@@ -39,6 +39,7 @@ public class WrenchBehaviour : MonoBehaviour {
             rotation = new Vector3(0, 0, 0);
             hit = true;
             hud.GetComponent<hudHandler>().pointInc(10);
+			hud.GetComponent<hudHandler>().stockEnergy(2);
 			int i = (int) Random.Range(0,2);
 			audio.clip = audioClips[i];
 			audio.Play();
