@@ -1,0 +1,12 @@
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\MyServer.dll
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\UnityEditor.dll
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\UnityEngine.dll
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\Mono.Cecil.dll
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\nunit.framework.dll
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\Unity.DataContract.dll
+E:\Data\Réalisation\Cassiopée\Test\test\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+E:\Data\Réalisation\Cassiopée\Test\test\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
+E:\Data\Réalisation\Cassiopée\Test\test\obj\Debug\Assembly-CSharp-firstpass.dll
+E:\Data\Réalisation\Cassiopée\Test\test\obj\Debug\Assembly-CSharp-firstpass.pdb
