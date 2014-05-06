@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class PlayerHandler : MonoBehaviour {
-	private GameObject hud = null;
+private hudHandler hud = null;
+public AudioClip hurtedSound;
+public AudioClip shielded;
 
 	// Use this for initialization
 	void Start () 
@@ -17,7 +19,7 @@ public class PlayerHandler : MonoBehaviour {
 		{
 			if (GameObject.FindGameObjectsWithTag("HUD") != null)
 			{
-				hud = GameObject.FindGameObjectWithTag("HUD");
+				hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>();
 		
 			}
 		}
@@ -25,9 +27,25 @@ public class PlayerHandler : MonoBehaviour {
 
 	public void hurted()
 	{
+		if (!hud.getInvincible ()) 
+		{
+			hud.healthDown(10);
+			hud.loseEnergy (3);
+			audio.clip = hurtedSound;
+			audio.Play ();
+		}
 
-		hud.SendMessage ("healthDown", 10);
-		audio.Play ();
+				 
+		else 
+		{
+			audio.clip = shielded;
+			audio.Play ();
+		}
+	}
+
+	public void healed()
+	{
+		hud.SendMessage ("healthUp", 30);
 	}
 
 }

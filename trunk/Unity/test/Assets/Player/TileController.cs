@@ -11,6 +11,8 @@ public class TileController : MonoBehaviour {
     private float targetAngle;
     private float currentAngle =0f;
     private int nbrTile;
+	private int tileSpeed;
+	private int speedOffSet;
 	// Use this for initialization 
 	void Start () 
     {
@@ -29,15 +31,22 @@ public class TileController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-    //if (isRotating)
-    //{
-    //    playerRotate();
+	void FixedUpdate () 
+	{
+		tileSpeed = nbrTile / 8;
+		
+		if (tileSpeed > 5) 
+		{
+			tileSpeed = 5;
+		}
+		
+		speedOffSet = 6;
+		farTile.transform.position += direction * (speedOffSet + tileSpeed) * Time.deltaTime;
+		nextTile.transform.position += direction * (speedOffSet + tileSpeed) * Time.deltaTime;
+		tile.transform.position += direction * (speedOffSet + tileSpeed)* Time.deltaTime;
+		
 
-    //}
-    farTile.transform.position += direction * (5 + nbrTile) * Time.deltaTime;
-    nextTile.transform.position += direction * (5 + nbrTile) * Time.deltaTime;
-	tile.transform.position += direction * (5+nbrTile)* Time.deltaTime;
+   
 	}
 
 	void OnTriggerEnter(Collider coll) 

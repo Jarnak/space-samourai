@@ -236,8 +236,11 @@ public class GameHandler : MonoBehaviour
     }
 
      void OnApplicationQuit()
-    {
-        server.GetComponent<ServerHandler>().Quit();
+    {	
+		if (iWantToPlayWithAndroid) 
+		{
+			server.GetComponent<ServerHandler> ().Quit ();
+		}
     }
 
 }
