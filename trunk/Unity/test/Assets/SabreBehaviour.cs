@@ -57,7 +57,7 @@ public class SabreBehaviour : MonoBehaviour
         if (withAndroid)
         {
             data = server.GetComponent<ServerHandler>().getData();
-            currentRot = new Quaternion(-data.z, data.x, data.y, data.w);
+			currentRot = new Quaternion( data.x, data.y, -data.z, data.w);
             transform.rotation = currentRot;
         }
     

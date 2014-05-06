@@ -10,7 +10,6 @@ public class enemyBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {	
-
 		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>();
 	}
 	
@@ -25,7 +24,7 @@ public class enemyBehaviour : MonoBehaviour {
         if (coll.tag == "sabre")
         {
             hud.pointInc(50);
-			hud.stockEnergy(2);
+			hud.stockEnergy(4);
 			audio.Play();
 			//Debug.Log("sound played");
 			Destroy(this.gameObject);

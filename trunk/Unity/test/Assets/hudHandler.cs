@@ -6,21 +6,26 @@ public class  hudHandler : MonoBehaviour {
 	public static bool invincible = false;
     private int intScore = 0;
     private int intHealth = 100;
-	private float floatEnergy = 100;
+	private float floatEnergy = 0;
 	private int intEnergy;
     public GUIText health;
     public GUIText score;
 	public GUIText energy;
 
 
-	private void invincibility ()
+	IEnumerator invincibility ()
 	{
-		if (Input.GetKey ("a")) 
+		invincible = true;
+		while (floatEnergy > 0.5f) 
 		{
 			Debug.Log (" You are invincible for now..");
-			invincible = true;
-			useEnergy (10);
+
+			useEnergy (30);
+
+			yield return null;
 		}
+		invincible = false;
+
 	}
 
 
@@ -34,8 +39,12 @@ public class  hudHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {	
-		invincible = false;
-		invincibility ();
+
+		if (Input.GetKeyDown(KeyCode.A) && invincible == false && floatEnergy > 100) 
+		{
+			StartCoroutine (invincibility());
+		}
+
 		Debug.Log (invincible);
 		int intEnergy = (int)floatEnergy;
 		
@@ -66,13 +75,14 @@ public class  hudHandler : MonoBehaviour {
 		
 		if (intEnergy < 100) 
 		{
-			stockEnergy (Time.deltaTime / 2);
+			stockEnergy (Time.deltaTime * 3);
 		}
 		if (intEnergy >= 100) 
 		{
-			stockEnergy (Time.deltaTime / 4);
+			stockEnergy (Time.deltaTime* 1.5f);
 		}
 
+	
 	}
 
     public void pointInc (int x)
