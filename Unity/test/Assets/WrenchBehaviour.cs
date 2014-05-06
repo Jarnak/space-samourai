@@ -40,7 +40,6 @@ public class WrenchBehaviour : MonoBehaviour {
             hit = true;
             hud.GetComponent<hudHandler>().pointInc(10);
 			int i = (int) Random.Range(0,2);
-			Debug.Log(i);
 			audio.clip = audioClips[i];
 			audio.Play();
             if (withAndroid)

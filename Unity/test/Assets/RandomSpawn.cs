@@ -3,45 +3,51 @@ using System.Collections;
 
 public class RandomSpawn : MonoBehaviour {
 
-
+	public GameObject LifeUp;
     public GameObject Ennemy;
-	public float SpawnArea = 1;
-	private GameObject[] ennemySpawns;
-	public GameObject popEnnemyPoint;
+	public float SpawnArea = 0.7f;
+	//private GameObject myHudHandler;
+	//private hudHandler hud; 
 	private Quaternion zeroQuat = new Quaternion (0, 0, 0, 0); 
+	private int popChance; 
 
 	void Start () 
     {
-		/*// On crée au préalable un empty gameobject nommé "popEnnemyPoint".
-		GameObject Spawn1 = Instantiate (popEnnemyPoint, new Vector3 (10, 0, 0), zeroQuat) as GameObject;
-        Spawn1.transform.parent = this.transform;
-
-		GameObject Spawn2 = Instantiate (popEnnemyPoint, new Vector3 (20, 0, 0), zeroQuat) as GameObject;
-        Spawn2.transform.parent = this.transform;
-
-		GameObject Spawn3 = Instantiate (popEnnemyPoint, new Vector3 (30, 0, 0), zeroQuat) as GameObject;
-        Spawn3.transform.parent = this.transform;
-
-		GameObject Spawn4 = Instantiate (popEnnemyPoint, new Vector3 (40, 0, 0), zeroQuat) as GameObject;
-        Spawn4.transform.parent = this.transform;
+		/* Bug on sait pas pourquoi
+		myHudHandler = GameObject.FindGameObjectWithTag("HUD");
+		Debug.Log (myHudHandler.name);
+		hud = myHudHandler.GetComponent<hudHandler>();
+		Debug.Log (hud.gameObject.name);
 		*/
 
-       
-		//ennemySpawns = GameObject.FindGameObjectsWithTag ("EnnemySpawnPoint");
     }
 
 	public void Spawn(GameObject tile)
     {
         //Debug.Log("in Spawn");
         for (int i = 0; i < 4; i++)
-        {
-            int nbOfEnnemies = Random.Range(0, 3);
+		{	
+            int nbOfEnnemies = Random.Range(1, 2);
+			if (GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>().getEnergy() > 100)
+			{
+				nbOfEnnemies = nbOfEnnemies * 2;
+			}
+
             for (int j = 0; j < nbOfEnnemies; j++)
             {
                 GameObject ennemy = Instantiate(Ennemy, new Vector3(tile.transform.position.x + (-15+10*i) + (Random.value*10)-5, 1, (Random.value*2) - 1 ), zeroQuat) as GameObject;
                 ennemy.transform.parent = this.transform;
             }
         }
+		popChance = 100 - GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>().getHealth();
+		//Debug.Log (popChance);
+		
+		if (Random.Range (1,100) <= popChance)
+			
+		{
+			GameObject lifeUp = Instantiate (LifeUp, new Vector3 (tile.transform.position.x + Random.Range (10,15), 1, tile.transform.position.z), zeroQuat) as GameObject;
+			lifeUp.transform.parent = this.transform;
+		}
     }
 	// Update is called once per frame
 	void Update () {

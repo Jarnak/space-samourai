@@ -4,14 +4,14 @@ using System.Collections;
 public class enemyBehaviour : MonoBehaviour {
 
 
-    public GameObject hud;
+    public hudHandler hud;
     
 
 	// Use this for initialization
 	void Start () 
     {	
 
-        hud = GameObject.FindGameObjectWithTag("HUD");
+		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>();
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,8 @@ public class enemyBehaviour : MonoBehaviour {
     {
         if (coll.tag == "sabre")
         {
-            hud.GetComponent<hudHandler>().pointInc(50);
+            hud.pointInc(50);
+			hud.stockEnergy(2);
 			audio.Play();
 			//Debug.Log("sound played");
 			Destroy(this.gameObject);
