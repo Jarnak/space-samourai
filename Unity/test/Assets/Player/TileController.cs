@@ -135,6 +135,25 @@ public class TileController : MonoBehaviour {
         farTile.transform.position = new Vector3(nextTile.transform.position.x + 50, 0, 0 - nextTile.GetComponent<TilePos>().zIn + nextTile.GetComponent<TilePos>().zOut - farTile.GetComponent<TilePos>().zIn);
         farTile.SetActive(true);
         farTile.SendMessage("Spawn", farTile);
-        Debug.Log(nextTile.transform.position);
     }
+
+	public void resetGame()
+	{
+		tile.SetActive (false);
+		nextTile.SetActive (false);
+		farTile.SetActive (false);
+
+		nbrTile = 0;
+		farTile = MapPool.getMap();
+		farTile.SetActive(true);
+		farTile.SendMessage("Spawn", farTile);
+		nextTile = MapPool.getMap();
+		nextTile.SetActive(true);
+		nextTile.SendMessage("Spawn", nextTile);
+		tile = MapPool.getMap();
+		tile.SetActive(true);
+		tile.transform.position = new Vector3(25, 0, 0);
+		nextTile.transform.position = new Vector3(75, 0, 0);
+		farTile.transform.position = new Vector3(125, 0, 0);
+	}
 }

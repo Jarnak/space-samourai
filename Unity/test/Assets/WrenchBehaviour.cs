@@ -51,10 +51,7 @@ public class WrenchBehaviour : MonoBehaviour {
         }
 
         if (coll.transform.tag == "Player" && hit == false)
-        {	
-			Debug.Log(coll); 
-			Debug.Log ( coll.gameObject.ToString()); 
-			Debug.Log ( coll.gameObject.name );
+        {	 
 			coll.gameObject.SendMessage("hurted");
 			//PlayerHandler PH = coll.gameObject.GetComponent<PlayerHandler>();
 			//PH.hurted();
