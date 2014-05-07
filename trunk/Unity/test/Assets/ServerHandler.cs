@@ -102,11 +102,11 @@ public class ServerHandler : MonoBehaviour
 
             StringReader sReader = new StringReader(toDeserialize);
             data = (DATA)XMLseri.Deserialize(sReader);
-			Debug.Log(data.x);
-            Debug.Log(data.y);
-            Debug.Log(data.z);
-            Debug.Log(data.w);          
-            Debug.Log("data.go");            
+			//Debug.Log(data.x);
+            //Debug.Log(data.y);
+            //Debug.Log(data.z);
+            //Debug.Log(data.w);          
+            //Debug.Log("data.go");            
                 
         }
 
