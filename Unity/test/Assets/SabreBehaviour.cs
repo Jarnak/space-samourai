@@ -11,7 +11,10 @@ public class SabreBehaviour : MonoBehaviour
     //Vector3 rot = Vector3.zero;
     public GameObject server;
     private DATA data;
-    Quaternion currentRot;
+    private Quaternion currentRot = new Quaternion(0,0,0,1);
+	private Quaternion currentAndroidRot = new Quaternion(0,0,0,0);
+	private Quaternion previousAndroidRot= new Quaternion(0,0,0,0);
+	private Quaternion toChangeQuaternion = new Quaternion (0,0,0,0);
     private bool withAndroid;
     private Vector3 rot;
     private Vector3 rLeft = Vector3.right * 8;
@@ -29,6 +32,7 @@ public class SabreBehaviour : MonoBehaviour
         if (!withAndroid)
         {
             rot = Vector3.zero;
+			Debug.Log (this.transform.rotation);
 
 
             if (Input.GetKey("left"))
@@ -55,12 +59,19 @@ public class SabreBehaviour : MonoBehaviour
 
         }
         if (withAndroid)
-        {
+        {	
             data = server.GetComponent<ServerHandler>().getData();
-			currentRot = new Quaternion( data.x, data.y, -data.z, data.w);
-            transform.rotation = currentRot;
+			currentRot = new Quaternion(data.x,data.y ,-data.z, -data.w);
+			Debug.Log(currentRot);
+			//this.transform.rotation = currentRot;
+			float EulerCurrentx = currentRot.eulerAngles.x;
+			float toChange = transform.rotation.eulerAngles.x - EulerCurrentx;
+			transform.rotation = Quaternion.AngleAxis(- EulerCurrentx, Vector3.left);
+
         }
-    
+		//data = server.GetComponent<ServerHandler>().getData();
+		//currentRot = new Quaternion(data.x,data.y,-data.z, data.w);
+		//currentRot = new Quaternion(1,0,0,1);
 
     }
 

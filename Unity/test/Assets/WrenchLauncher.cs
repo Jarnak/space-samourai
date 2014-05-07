@@ -30,8 +30,8 @@ public class WrenchLauncher : MonoBehaviour {
                 
                 Rigidbody clone = Instantiate(prefab, transform.position, transform.rotation) as Rigidbody;
                 targetTime = Time.time + 4;
-                //float launchOffset = Random.value - 0.5f;
-                //vToPlyr = vToPlyr + launchOffset * Vector3.forward;
+                float launchOffset = Random.value - 0.5f;
+                vToPlyr = vToPlyr + launchOffset * Vector3.forward;
                 vToPlyr = Vector3.Normalize(vToPlyr);
                 clone.transform.parent = this.transform;
                 clone.velocity = vToPlyr * 10;
