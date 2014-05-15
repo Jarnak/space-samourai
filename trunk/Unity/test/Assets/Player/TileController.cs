@@ -25,9 +25,10 @@ public class TileController : MonoBehaviour {
         nextTile.SendMessage("Spawn", nextTile);
         tile = MapPool.getMap();
         tile.SetActive(true);
-        tile.transform.position = new Vector3(25, 0, 0);
-        nextTile.transform.position = new Vector3(75, 0, 0);
-        farTile.transform.position = new Vector3(125, 0, 0);
+		// tile de base 25 75 125 , tile d eyann 31.5, 94.5, 153.5
+		tile.transform.position = new Vector3(20f, 0, 0);
+		nextTile.transform.position = new Vector3(56.38f, 0, 0);
+		farTile.transform.position = new Vector3(92.76f, 0, 0);
 	}
 	
 	// Update is called once per frame
@@ -141,7 +142,7 @@ public class TileController : MonoBehaviour {
         tile = nextTile;
         nextTile = farTile;
         farTile = nTile;
-        farTile.transform.position = new Vector3(nextTile.transform.position.x + 50, 0, 0 - nextTile.GetComponent<TilePos>().zIn + nextTile.GetComponent<TilePos>().zOut - farTile.GetComponent<TilePos>().zIn);
+        farTile.transform.position = new Vector3(nextTile.transform.position.x + 36.38f, 0, 0 - nextTile.GetComponent<TilePos>().zIn + nextTile.GetComponent<TilePos>().zOut - farTile.GetComponent<TilePos>().zIn);
         farTile.SetActive(true);
         farTile.SendMessage("Spawn", farTile);
     }
@@ -161,8 +162,8 @@ public class TileController : MonoBehaviour {
 		nextTile.SendMessage("Spawn", nextTile);
 		tile = MapPool.getMap();
 		tile.SetActive(true);
-		tile.transform.position = new Vector3(25, 0, 0);
-		nextTile.transform.position = new Vector3(75, 0, 0);
-		farTile.transform.position = new Vector3(125, 0, 0);
+		tile.transform.position = new Vector3(20f, 0, 0);
+		nextTile.transform.position = new Vector3(56.34f, 0, 0);
+		farTile.transform.position = new Vector3(92.78f, 0, 0);
 	}
 }

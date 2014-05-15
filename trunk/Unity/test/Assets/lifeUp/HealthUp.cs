@@ -18,7 +18,7 @@ public class HealthUp : MonoBehaviour {
 	void Update () {
 		transform.Rotate(rotation);
 	}
-	void OnCollisionEnter(Collision coll)
+	void OnTriggerEnter(Collider coll)
 	{
 		/* if (coll.transform.tag == "sabre" )
 		{
@@ -35,9 +35,9 @@ public class HealthUp : MonoBehaviour {
 		if (coll.transform.tag == "Player")
 		{
 			
-			Debug.Log(coll); 
-			Debug.Log ( coll.gameObject.ToString()); 
-			Debug.Log ( coll.gameObject.name );
+			//Debug.Log(coll); 
+			//Debug.Log ( coll.gameObject.ToString()); 
+			//Debug.Log ( coll.gameObject.name );
 			coll.gameObject.SendMessage("healed");
 			
 			Destroy(this.gameObject);

@@ -58,7 +58,7 @@ public class RandomSpawn : MonoBehaviour {
 	{
 		foreach (Transform child in this.transform) 
 		{
-			if (child.tag == "ennemy")
+			if (child.tag == "ennemy" || child.tag == "heal")
 			{
 				Destroy(child.gameObject);
 			}

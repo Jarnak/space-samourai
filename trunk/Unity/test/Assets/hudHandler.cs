@@ -8,15 +8,35 @@ public class  hudHandler : MonoBehaviour {
     private int intHealth = 100;
 	private float floatEnergy = 0;
 	private int intEnergy;
-    public GUIText health;
+    //public GUIText health;
     public GUIText score;
-	public GUIText energy;
+	//public GUIText energy;
 
+    public Texture vert;
+    public Texture rouge;
+    public Texture jaune;
+    public Texture gris;
+    public Texture orange;
 
+    // GUI variable
+
+    private Rect healthRect;
+    private Rect powerRect;
+
+    private int jaugeWidth = 20;
+
+    private int jaugeHeight;
+
+    private int topIndent =  50;
+
+    private int hIndent =50;
+
+    GUIStyle style;
+   
 	IEnumerator invincibility ()
 	{
 		invincible = true;
-		while (floatEnergy > 0.5f) 
+		while (floatEnergy > 1f) 
 		{
 			Debug.Log (" You are invincible for now..");
 
@@ -30,10 +50,12 @@ public class  hudHandler : MonoBehaviour {
 
 
 	void Start () {
-        health.text = intHealth.ToString();
+        //health.text = intHealth.ToString();
         score.text = intScore.ToString();
-		energy.text = floatEnergy.ToString ();
+		//energy.text = floatEnergy.ToString ();
 		invincible = false;
+        jaugeHeight = Screen.height - 100;
+		score.pixelOffset = new Vector2 (Screen.width / 2, Screen.height - 40 );
 	}
 	
 	// Update is called once per frame
@@ -51,7 +73,7 @@ public class  hudHandler : MonoBehaviour {
 		
 		if (intEnergy > 150) 
 		{
-			loseEnergy (intEnergy - 150);
+			intEnergy = 150;
 		}
 		
 		if (intEnergy < 0) 
@@ -69,9 +91,9 @@ public class  hudHandler : MonoBehaviour {
 			intHealth = 0;
 		}
 		
-		health.text = intHealth.ToString ();
+		//health.text = intHealth.ToString ();
 		score.text = intScore.ToString ();
-		energy.text = intEnergy.ToString ();
+		//energy.text = intEnergy.ToString ();
 		
 		if (intEnergy < 100) 
 		{
@@ -81,7 +103,6 @@ public class  hudHandler : MonoBehaviour {
 		{
 			stockEnergy (Time.deltaTime* 1.5f);
 		}
-
 	
 	}
 
@@ -99,15 +120,23 @@ public class  hudHandler : MonoBehaviour {
 	}
 	public void stockEnergy (float x)
 	{
-		floatEnergy += x;
+        if (floatEnergy + x > 150f)
+            floatEnergy = 150;
+        else
+            floatEnergy += x;
 	}
 	public void useEnergy (float x)
 	{
-		floatEnergy -= x*Time.deltaTime;
+        if (floatEnergy - x * Time.deltaTime < 0)
+            floatEnergy = 0;
+        else
+            floatEnergy -= x * Time.deltaTime;
 	}
 	public void loseEnergy (float x)
-	{	
-		floatEnergy -= x;
+	{
+        if (floatEnergy - x < 0)
+            floatEnergy = 0;
+        else floatEnergy -= x;
 	}
 	public  int getHealth()
 	{
@@ -139,5 +168,34 @@ public class  hudHandler : MonoBehaviour {
 		return intEnergy;
 	}
 
+	void OnGUI()
+	{
+
+
+        if (intHealth > 20 )
+        {
+            GUI.Box(new Rect(hIndent, topIndent, jaugeWidth, jaugeHeight * intHealth/100), vert); 
+        }
+        else 
+        {
+            GUI.Box(new Rect(hIndent, topIndent, jaugeWidth, jaugeHeight * intHealth / 100), rouge);
+        }
+	
+        if (floatEnergy < 100)
+        {
+            GUI.Box(new Rect(Screen.width - 2*hIndent, topIndent, jaugeWidth, jaugeHeight * floatEnergy / 150), gris); 
+        }
+        else
+        {
+            if (floatEnergy  == 150)
+            {
+                GUI.Box(new Rect(Screen.width - 2 * hIndent, topIndent, jaugeWidth, jaugeHeight * floatEnergy / 150), orange); 
+            }
+            else
+            {
+                GUI.Box(new Rect(Screen.width - 2 * hIndent, topIndent, jaugeWidth, jaugeHeight * floatEnergy / 150), jaune);
+            }
+        }
+    }
 
 }

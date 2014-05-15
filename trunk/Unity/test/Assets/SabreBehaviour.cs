@@ -11,10 +11,7 @@ public class SabreBehaviour : MonoBehaviour
     //Vector3 rot = Vector3.zero;
     public GameObject server;
     private DATA data;
-    private Quaternion currentRot = new Quaternion(0,0,0,1);
-	private Quaternion currentAndroidRot = new Quaternion(0,0,0,0);
-	private Quaternion previousAndroidRot= new Quaternion(0,0,0,0);
-	private Quaternion toChangeQuaternion = new Quaternion (0,0,0,0);
+    private Quaternion currentRot;
     private bool withAndroid;
     private Vector3 rot;
     private Vector3 rLeft = Vector3.right * 8;
@@ -23,6 +20,7 @@ public class SabreBehaviour : MonoBehaviour
     {
         withAndroid = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameHandler>().withAndroid();
         server = GameObject.FindGameObjectWithTag("Server");
+		transform.rotation = Quaternion.AngleAxis(-30, Vector3.forward);
     }
 
     // Update is called once per frame
