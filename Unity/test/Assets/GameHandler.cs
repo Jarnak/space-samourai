@@ -103,6 +103,7 @@ public class GameHandler : MonoBehaviour
         {	
 			GameObject.FindGameObjectWithTag("Player").SendMessage("resetGame");
 			myHudHandler.setScore(0);
+            myHudHandler.loseEnergy(150);
 			myHudHandler.setHealth(100);
 			Time.timeScale=1f;
 			isDead = false;
