@@ -68,7 +68,7 @@ public class  hudHandler : MonoBehaviour {
 	void Update () 
     {	
 
-		intHealth = 100;
+
 		if (withAndroid) 
 		{
 			data = server.GetComponent<ServerHandler>().getData();
