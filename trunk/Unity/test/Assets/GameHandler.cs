@@ -152,6 +152,7 @@ public class GameHandler : MonoBehaviour
 				iWantToPlayWithoutAndroid = true;
                 launched = true;
                 currentGame = (GameObject)Instantiate(game);
+				Time.timeScale = 1f;
 				myHudHandler = GameObject.FindGameObjectWithTag ("HUD").GetComponent<hudHandler>();
                 // on instancie le jeu;
             }
@@ -171,6 +172,7 @@ public class GameHandler : MonoBehaviour
                         // on lance le jeu avec android
                         launched = true;
                         currentGame = (GameObject)Instantiate(game);
+						Time.timeScale = 1f;
 						myHudHandler = GameObject.FindGameObjectWithTag ("HUD").GetComponent<hudHandler>();
                     }
 

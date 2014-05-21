@@ -5,7 +5,7 @@ public class HealthUp : MonoBehaviour {
 	
 	private bool withAndroid = false;
 	public GameObject hud;
-	Vector3 rotation = new Vector3(0,10,0);
+	Vector3 rotation = new Vector3(0,5,0);
 	
 	
 	
@@ -38,9 +38,10 @@ public class HealthUp : MonoBehaviour {
 			//Debug.Log(coll); 
 			//Debug.Log ( coll.gameObject.ToString()); 
 			//Debug.Log ( coll.gameObject.name );
+            
 			coll.gameObject.SendMessage("healed");
-			
-			Destroy(this.gameObject);
+            audio.Play();
+			Destroy(this.gameObject, 1);
 		}
 		
 	}

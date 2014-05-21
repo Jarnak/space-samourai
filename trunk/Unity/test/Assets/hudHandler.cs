@@ -17,6 +17,10 @@ public class  hudHandler : MonoBehaviour {
     public Texture jaune;
     public Texture gris;
     public Texture orange;
+	public GameObject server;
+	private DATA data;
+    bool lowLife = false; 
+	private bool withAndroid;
 
     // GUI variable
 
@@ -56,18 +60,47 @@ public class  hudHandler : MonoBehaviour {
 		invincible = false;
         jaugeHeight = Screen.height - 100;
 		score.pixelOffset = new Vector2 (Screen.width / 2, Screen.height - 40 );
+		withAndroid = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameHandler>().withAndroid();
+		server = GameObject.FindGameObjectWithTag("Server");
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {	
 
-		if (Input.GetKeyDown(KeyCode.A) && invincible == false && floatEnergy > 100) 
+		intHealth = 100;
+		if (withAndroid) 
+		{
+			data = server.GetComponent<ServerHandler>().getData();
+			//Debug.Log(data.shield);
+			if ( data.shield && withAndroid && invincible == false && floatEnergy > 100)
+			{
+				StartCoroutine (invincibility());
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.A) && !withAndroid && invincible == false && floatEnergy > 100) 
 		{
 			StartCoroutine (invincibility());
 		}
+        
+        if (!lowLife  && intHealth <=20)
+        {
+            audio.Play();
+            lowLife = true;
+        }
 
-		Debug.Log (invincible);
+        if (intHealth > 20)
+        {
+            audio.Stop();
+            lowLife = false;
+
+        }
+
+
+
+
+		//Debug.Log (invincible);
 		int intEnergy = (int)floatEnergy;
 		
 		
@@ -172,7 +205,7 @@ public class  hudHandler : MonoBehaviour {
 	{
 
 
-        if (intHealth > 20 )
+        if (!lowLife)
         {
             GUI.Box(new Rect(hIndent, topIndent, jaugeWidth, jaugeHeight * intHealth/100), vert); 
         }

@@ -12,6 +12,7 @@ using System.Text;
         public float z=0;
         public float w = 0;
         public bool go;
+	public bool shield;
 
         public void setX(float nx)
         {
