@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Net.Sockets;
 using System.Threading;
@@ -102,11 +102,17 @@ public class ServerHandler : MonoBehaviour
 
             StringReader sReader = new StringReader(toDeserialize);
             data = (DATA)XMLseri.Deserialize(sReader);
+			//Debug.Log("x");
 			//Debug.Log(data.x);
-            //Debug.Log(data.y);
-            //Debug.Log(data.z);
-            //Debug.Log(data.w);          
-            //Debug.Log("data.go");            
+			//Debug.Log("y");
+			//Debug.Log(data.y);
+			//Debug.Log("z");
+			//Debug.Log(data.z);
+			//Debug.Log("w");
+            //Debug.Log(data.w);
+
+            //Debug.Log(data.go); 
+			//Debug.Log(data.shield);
                 
         }
 

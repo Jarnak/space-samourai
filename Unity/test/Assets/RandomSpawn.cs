@@ -9,7 +9,7 @@ public class RandomSpawn : MonoBehaviour {
 	//private GameObject myHudHandler;
 	//private hudHandler hud; 
 	private Quaternion zeroQuat = new Quaternion (0, 0, 0, 0); 
-	private int popChance; 
+	private float popChance; 
 
 	void Start () 
     {
@@ -35,11 +35,11 @@ public class RandomSpawn : MonoBehaviour {
 
             for (int j = 0; j < nbOfEnnemies; j++)
             {
-                GameObject ennemy = Instantiate(Ennemy, new Vector3(tile.transform.position.x + (-15+10*i) + (Random.value*10)-5, 1, (Random.value*2) - 1 ), zeroQuat) as GameObject;
+                GameObject ennemy = Instantiate(Ennemy, new Vector3(tile.transform.position.x + (-15+8*i) + (Random.value*10)-5, 1, (Random.value*2) - 1 ), zeroQuat) as GameObject;
                 ennemy.transform.parent = this.transform;
             }
         }
-		popChance = 100 - GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>().getHealth();
+		popChance = (100 - GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>().getHealth())/2;
 		//Debug.Log (popChance);
 		
 		if (Random.Range (1,100) <= popChance)

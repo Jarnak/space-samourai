@@ -30,7 +30,7 @@ public class SabreBehaviour : MonoBehaviour
         if (!withAndroid)
         {
             rot = Vector3.zero;
-			Debug.Log (this.transform.rotation);
+			//Debug.Log (this.transform.rotation);
 
 
             if (Input.GetKey("left"))
@@ -59,13 +59,25 @@ public class SabreBehaviour : MonoBehaviour
         if (withAndroid)
         {	
             data = server.GetComponent<ServerHandler>().getData();
-			currentRot = new Quaternion(data.x,data.y ,-data.z, -data.w);
+			//currentRot = new Quaternion( data.x , data.y, data.z, data.w);
+			currentRot = Quaternion.identity;
 			Debug.Log(currentRot);
-			//this.transform.rotation = currentRot;
+			this.transform.rotation = currentRot;
 			float EulerCurrentx = currentRot.eulerAngles.x;
-			float toChange = transform.rotation.eulerAngles.x - EulerCurrentx;
-			transform.rotation = Quaternion.AngleAxis(- EulerCurrentx, Vector3.left);
-
+			float EulerCurrenty = currentRot.eulerAngles.y;
+			float EulerCurrentz = currentRot.eulerAngles.z;
+			Debug.Log("x");
+			Debug.Log( EulerCurrentx);
+			Debug.Log ( " y ");
+			Debug.Log ( EulerCurrenty);
+			Debug.Log (" z ");
+			Debug.Log(  EulerCurrentz);
+			//transform.rotation = Quaternion.Euler(new Vector3(EulerCurrentx, 0, EulerCurrentz));
+            //float EulerCurrenty = currentRot.eulerAngles.y;
+			//float toChangex = transform.rotation.eulerAngles.x - EulerCurrentx;
+            //float toChangey = transform.rotation.eulerAngles.y - EulerCurrenty;
+			//transform.rotation = Quaternion.AngleAxis( EulerCurrentx , Vector3.left);
+            //transform.Rotate(new Vector3(0, 0, -20)); 
         }
 		//data = server.GetComponent<ServerHandler>().getData();
 		//currentRot = new Quaternion(data.x,data.y,-data.z, data.w);

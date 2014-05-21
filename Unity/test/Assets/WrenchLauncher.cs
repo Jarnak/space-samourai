@@ -7,17 +7,19 @@ public class WrenchLauncher : MonoBehaviour {
 	public Rigidbody prefab;
 	public float targetTime;
     private Vector3 vToPlyr;
+	private enemyBehaviour mEB;
 	// Use this for initialization
 	void Start () 
     {	
 		targetTime =1;
+
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
     {
       
-        vToPlyr = new Vector3(target.transform.position.x - transform.position.x, 0.2f, (target.transform.position.z + 0.2f) - transform.position.z );
+        vToPlyr = new Vector3(target.transform.position.x - transform.position.x, 0.5f, (target.transform.position.z + 0.2f) - transform.position.z );
         
     if (transform.position.x > target.transform.position.x )
     {
@@ -27,7 +29,6 @@ public class WrenchLauncher : MonoBehaviour {
 
             if (targetTime < Time.time)
             {   
-                
                 Rigidbody clone = Instantiate(prefab, transform.position, transform.rotation) as Rigidbody;
                 targetTime = Time.time + 4;
                 float launchOffset = Random.value - 0.5f;
