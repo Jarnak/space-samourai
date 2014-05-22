@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Space Samourai</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="swag">Space Samouraï</string>
+    <string name="boutton1">Cannot touch this !</string>
+	<string name="ssactivity">SendService</string>
+	<string name="connect">Connect</string>
+	<string name="configure">Configure…</string>
+	<string name="ipaddress">Adresse IP</string>
+	<string name="port">Port</string>
+    <string name="set">Set</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit">Exit</string>
+    <string name="start">Start</string>
+    <string name="shield">shield</string>
+</resources>
