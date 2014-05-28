@@ -8,18 +8,19 @@ public class  hudHandler : MonoBehaviour {
     private int intHealth = 100;
 	private float floatEnergy = 0;
 	private int intEnergy;
+    private bool shieldReady = false;
+    
+
+    // Sound variable
+    public AudioClip ShieldOff;
+    public AudioClip ShieldUP;
+
     //public GUIText health;
     public GUIText score;
-	//public GUIText energy;
 
-    public Texture vert;
-    public Texture rouge;
-    public Texture jaune;
-    public Texture gris;
-    public Texture orange;
+
 	public GameObject server;
 	private DATA data;
-    bool lowLife = false; 
 	private bool withAndroid;
 
     // GUI variable
@@ -27,7 +28,7 @@ public class  hudHandler : MonoBehaviour {
     private Rect healthRect;
     private Rect powerRect;
 
-    private int jaugeWidth = 20;
+    private int jaugeWidth = 40;
 
     private int jaugeHeight;
 
@@ -36,6 +37,12 @@ public class  hudHandler : MonoBehaviour {
     private int hIndent =50;
 
     GUIStyle style;
+
+    public Texture vert;
+    public Texture rouge;
+    public Texture jaune;
+    public Texture gris;
+    public Texture orange;
    
 	IEnumerator invincibility ()
 	{
@@ -84,23 +91,12 @@ public class  hudHandler : MonoBehaviour {
 			StartCoroutine (invincibility());
 		}
         
-        if (!lowLife  && intHealth <=20)
-        {
-            audio.Play();
-            lowLife = true;
-        }
-
-        if (intHealth > 20)
-        {
-            audio.Stop();
-            lowLife = false;
-
-        }
 
 
 
 
-		//Debug.Log (invincible);
+        // on regarde si les différentes variables sont bien dans les bornes sinon on les remet a la borne
+        
 		int intEnergy = (int)floatEnergy;
 		
 		
@@ -124,17 +120,30 @@ public class  hudHandler : MonoBehaviour {
 			intHealth = 0;
 		}
 		
-		//health.text = intHealth.ToString ();
+
 		score.text = intScore.ToString ();
-		//energy.text = intEnergy.ToString ();
-		
+
+        // Execution dépendant de l'état de l'energie;
+
 		if (intEnergy < 100) 
 		{
 			stockEnergy (Time.deltaTime * 3);
+            if (shieldReady && !invincible)
+            {
+                shieldReady = false;
+                audio.clip = ShieldOff;
+                audio.Play();
+            }
 		}
 		if (intEnergy >= 100) 
 		{
 			stockEnergy (Time.deltaTime* 1.5f);
+            if (!shieldReady && !invincible)
+            {
+                audio.clip = ShieldUP;
+                audio.Play();
+                shieldReady = true;
+            }
 		}
 	
 	}
@@ -205,7 +214,7 @@ public class  hudHandler : MonoBehaviour {
 	{
 
 
-        if (!lowLife)
+        if (intHealth >20)
         {
             GUI.Box(new Rect(hIndent, topIndent, jaugeWidth, jaugeHeight * intHealth/100), vert); 
         }
