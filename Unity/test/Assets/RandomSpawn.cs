@@ -35,7 +35,7 @@ public class RandomSpawn : MonoBehaviour {
 
             for (int j = 0; j < nbOfEnnemies; j++)
             {
-                GameObject ennemy = Instantiate(Ennemy, new Vector3(tile.transform.position.x + (-15+8*i) + (Random.value*10)-5, 1, (Random.value*2) - 1 ), zeroQuat) as GameObject;
+                GameObject ennemy = Instantiate(Ennemy, new Vector3(tile.transform.position.x + (-15+8*i) + (Random.value*10)-5, 0.9f, (Random.value*2) - 1 ), zeroQuat) as GameObject;
                 ennemy.transform.parent = this.transform;
             }
         }

@@ -121,6 +121,10 @@ public class GameHandler : MonoBehaviour
 			onPause = false;
 			Time.timeScale = 1f;
 		}
+        if (GUILayout.Button("Quitter", GUILayout.Height(buttonHeight)))
+        {
+            Application.Quit();
+        }
 		
 	}
 
