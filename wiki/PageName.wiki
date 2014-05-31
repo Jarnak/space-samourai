@@ -5,11 +5,11 @@
 
 Ci dessous la liste des devices possédant un gyroscope et donc compatible avec l'application Space Samourai
 
-*Téléphones
+_Téléphones :_
 
-HTC Sensation
-HTC Sensation XL
-HTC Evo 3D
+*HTC Sensation
+*HTC Sensation XL
+*HTC Evo 3D
 HTC One S
 HTC One X
 Huawei Ascend P1
@@ -27,6 +27,7 @@ Samsung Galaxy Nexus (i9250)
 Samsung Galaxy Note (n7000)
 Sony Xperia P (LT22i)
 Sony Xperia S (LT26i)
+
 * Tablets:
 
 Acer Iconia Tab A100 (7")
