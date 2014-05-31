@@ -2,6 +2,7 @@
 #labels Phase-Deploy
 
 = Introduction =
+
  * Space Samourai est un jeu créer dans le cadre d'un projet étudiant dans le but de concevoir un jeu utilisant un télephone android.
  * Bien que le jeu puisse se jouer seul sans téléphone, pour profiter pleinement de l'expérience de jeu il est recommandé d'utiliser un téléphone. Pour savoir si votre téléphones est compatible (ie qu'il possèdent un gyroscope) veuillez vous reportez à la page [TelephonesCompatibles] ou aux specifications de votre téléphone
 
@@ -9,4 +10,26 @@
 
   * Dans un premier temps télécharger l'archive SpaceSamourai.rar : lien à insérer lorsque la version finale sera release.
   * Ensuite extraire de l'archive le dossier de jeu correspondant à votre architecture de processeur  : Space_Samouraix86 pour une architecture 32 bits, ou Space_Samouraix64 pour une architecture 64 bits.
-( si vous n'en avez aucune idée veuillez vous référer à : http://www.commentcamarche.net/faq/19107-32-ou-64-bits-comment-savoir
+( si vous n'en avez aucune idée veuillez vous référer à : http://www.commentcamarche.net/faq/19107-32-ou-64-bits-comment-savoir ) 
+
+= Installer l'application Android =
+
+On sait pas encore
+
+= Jouer au jeu = 
+
+== Lancer le jeu ==
+
+   Il suffit pour cela de lancer l'executable se situant dans le dossier extrait dans la rubrique Installer le jeu.
+ 
+== Jouer sans Android == 
+
+  Cliquer sur le bouton jouer sans android (CAPTAIN OBVIOUS)!
+  Les contrôles sont alors : 
+  * Droite/Gauche pour bouger le sabre
+  * Touche A pour lancer le bouclier
+
+
+== Jouer avec Android == 
+
+
