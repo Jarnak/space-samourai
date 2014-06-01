@@ -3,7 +3,7 @@
 
 = Introduction =
 
- * Space Samourai est un jeu créer dans le cadre d'un projet étudiant dans le but de concevoir un jeu utilisant un télephone android.
+ * Space Samourai est un jeu créé dans le cadre d'un projet étudiant dans le but de concevoir un jeu utilisant un télephone android.
  * Bien que le jeu puisse se jouer seul sans téléphone, pour profiter pleinement de l'expérience de jeu il est recommandé d'utiliser un téléphone. Pour savoir si votre téléphones est compatible (ie qu'il possèdent un gyroscope) veuillez vous reportez à la page [TelephonesCompatibles] ou aux specifications de votre téléphone
 
 = Installer le jeu sous Windows =
@@ -31,5 +31,3 @@ On sait pas encore
 
 
 == Jouer avec Android == 
-
-
