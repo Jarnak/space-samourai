@@ -12,7 +12,7 @@ public class enemyBehaviour : MonoBehaviour {
 	void Start () 
     {	
 		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>();
-		myBody = transform.Find ("ninjajeu").gameObject;
+		//myBody = transform.Find ("ninjajeu").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -29,7 +29,7 @@ public class enemyBehaviour : MonoBehaviour {
 			hud.stockEnergy(4);
 			audio.Play();
 			//Debug.Log("sound played");
-			Destroy(this.gameObject);
+			Destroy(this.gameObject, 0f);
             
         }
     }

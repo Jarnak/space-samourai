@@ -166,4 +166,9 @@ public class TileController : MonoBehaviour {
 		nextTile.transform.position = new Vector3(56.34f, 0, 0);
 		farTile.transform.position = new Vector3(92.78f, 0, 0);
 	}
+
+	public int getNbrTile()
+	{
+		return nbrTile;
+	}
 }

@@ -9,7 +9,8 @@ public class RandomSpawn : MonoBehaviour {
 	//private GameObject myHudHandler;
 	//private hudHandler hud; 
 	private Quaternion zeroQuat = new Quaternion (0, 0, 0, 0); 
-	private float popChance; 
+	private float popChance;
+	private int nTile;
 
 	void Start () 
     {
@@ -19,7 +20,7 @@ public class RandomSpawn : MonoBehaviour {
 		hud = myHudHandler.GetComponent<hudHandler>();
 		Debug.Log (hud.gameObject.name);
 		*/
-
+	
     }
 
 	public void Spawn(GameObject tile)
@@ -27,15 +28,15 @@ public class RandomSpawn : MonoBehaviour {
         //Debug.Log("in Spawn");
         for (int i = 0; i < 4; i++)
 		{	
-            int nbOfEnnemies = Random.Range(1, 2);
-			if (GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>().getEnergy() > 100)
-			{
-				nbOfEnnemies = nbOfEnnemies * 2;
-			}
+			nTile = GameObject.FindGameObjectWithTag ("Player").GetComponent<TileController> ().getNbrTile();
+            int nbOfEnnemies = Random.Range(1, 2 + Mathf.FloorToInt(nTile/6));
+
+
+
 
             for (int j = 0; j < nbOfEnnemies; j++)
             {
-                GameObject ennemy = Instantiate(Ennemy, new Vector3(tile.transform.position.x + (-15+8*i) + (Random.value*10)-5, 0.9f, (Random.value*2) - 1 ), zeroQuat) as GameObject;
+                GameObject ennemy = Instantiate(Ennemy, new Vector3(tile.transform.position.x + (-15+8*i) + (Random.value*10)-5, 0.9f, Mathf.Sign(((Random.value*2) - 1)) * ((Random.value*0.5f)+0.5f) ), zeroQuat) as GameObject;
                 ennemy.transform.parent = this.transform;
             }
         }
