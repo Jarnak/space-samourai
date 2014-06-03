@@ -12,6 +12,8 @@ private AudioSource[] tabSource;
 
 bool lowLife = false; 
 private CapsuleCollider capsule;
+private GameObject ouch;
+private float lastHitTime;
 
 
 
@@ -21,12 +23,19 @@ private CapsuleCollider capsule;
         tabSource = GetComponents<AudioSource>();
         shieldHurtSound = tabSource[0];
         battement = tabSource[1];
+		ouch = GameObject.Find ("ouch");
+		ouch.SetActive (false);
+
         
 	}
 	
 	// Update is called once per frame
 	void Update () 
-	{
+	{	
+		if (ouch.activeInHierarchy == true && Time.time > lastHitTime + 0.3f) 
+		{
+			ouch.SetActive(false);
+		}
 		if (hud == null) 
 		{
 			if (GameObject.FindGameObjectsWithTag("HUD") != null)
@@ -76,6 +85,8 @@ private CapsuleCollider capsule;
 		{
 			hud.healthDown(10);
 			hud.loseEnergy (8);
+			ouch.SetActive(true);
+			lastHitTime = Time.time;
             shieldHurtSound.clip = hurtedSound;
 			audio.Play ();
 		}
