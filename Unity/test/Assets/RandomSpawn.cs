@@ -11,6 +11,7 @@ public class RandomSpawn : MonoBehaviour {
 	private Quaternion zeroQuat = new Quaternion (0, 0, 0, 0); 
 	private float popChance;
 	private int nTile;
+	private bool enabl = true;
 
 	void Start () 
     {
@@ -56,13 +57,25 @@ public class RandomSpawn : MonoBehaviour {
 	}
 
 	void OnDisable()
-	{
+	{	
+		enabl = true;
 		foreach (Transform child in this.transform) 
 		{
 			if (child.tag == "ennemy" || child.tag == "heal")
 			{
 				Destroy(child.gameObject);
+
 			}
 		}
+	}
+	public void disable()
+	{	
+		Debug.Log("désactivé");
+		enabl = false;
+	}
+	public bool enable()
+	{	
+		Debug.Log ("activé ?");
+		return enabl;
 	}
 }
