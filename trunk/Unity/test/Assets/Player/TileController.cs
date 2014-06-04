@@ -51,11 +51,14 @@ public class TileController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider coll) 
-    {
-
-            if (coll.tag =="NewTile")
+    {		
+		
+            if (coll.tag =="NewTile" && coll.transform.parent.gameObject.GetComponent<RandomSpawn>().enable())
             {
                 enterNewTile();
+
+				coll.transform.parent.gameObject.GetComponent<RandomSpawn>().disable();
+
             }
 
 	}
