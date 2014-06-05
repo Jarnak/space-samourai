@@ -12,7 +12,7 @@ public class enemyBehaviour : MonoBehaviour {
 	void Start () 
     {	
 		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<hudHandler>();
-		//myBody = transform.Find ("ninjajeu").gameObject;
+		myBody = transform.Find ("ninjeuboom").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -26,10 +26,12 @@ public class enemyBehaviour : MonoBehaviour {
         if (coll.tag == "sabre")
         {
             hud.pointInc(50);
-			hud.stockEnergy(4);
+			hud.stockEnergy(10);
+			this.GetComponent<BoxCollider>().size = Vector3.zero;
+			myBody.transform.FindChild("Group20682").GetComponent<MeshRenderer>().enabled=false;
+			myBody.GetComponent<Animator>().SetTrigger("die");
 			audio.Play();
-			//Debug.Log("sound played");
-			Destroy(this.gameObject, 0f);
+			Destroy(this.gameObject, 1f);
             
         }
     }

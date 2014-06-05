@@ -59,6 +59,7 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
+		Debug.Log (Quaternion.identity);
     }
 
     // Update is called once per frame
