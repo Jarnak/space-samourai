@@ -66,9 +66,9 @@ public class SabreBehaviour : MonoBehaviour
 			float EulerCurrentx = currentRot.eulerAngles.x;
 			float EulerCurrenty = currentRot.eulerAngles.y;
 			float EulerCurrentz = currentRot.eulerAngles.z;
-			if (EulerCurrentz < 180)
+			if (EulerCurrentx < 180)
 			{
-				EulerCurrentz = 0;
+				EulerCurrentx = 0;
 			}
 			transform.rotation = Quaternion.Euler(new Vector3(EulerCurrentz,0,EulerCurrentx));
             //float EulerCurrenty = currentRot.eulerAngles.y;
