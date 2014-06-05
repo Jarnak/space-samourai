@@ -59,7 +59,7 @@ public class SabreBehaviour : MonoBehaviour
         if (withAndroid)
         {	
             data = server.GetComponent<ServerHandler>().getData();
-			currentRot = new Quaternion( data.x , data.y, -data.z, -data.w);
+			currentRot = new Quaternion( data.x , data.y, data.z, data.w);
 			//currentRot = Quaternion.identity;
 			//Debug.Log(currentRot);
 			//this.transform.rotation = currentRot;
@@ -70,7 +70,7 @@ public class SabreBehaviour : MonoBehaviour
 			{
 				EulerCurrentz = 0;
 			}
-			transform.rotation = Quaternion.Euler(new Vector3(EulerCurrentx,0,EulerCurrentz));
+			transform.rotation = Quaternion.Euler(new Vector3(EulerCurrentz,0,EulerCurrentx));
             //float EulerCurrenty = currentRot.eulerAngles.y;
 			//float toChangex = transform.rotation.eulerAngles.x - EulerCurrentx;
             //float toChangey = transform.rotation.eulerAngles.y - EulerCurrenty;

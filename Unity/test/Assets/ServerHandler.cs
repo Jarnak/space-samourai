@@ -60,10 +60,10 @@ public class ServerHandler : MonoBehaviour
         clientStream = tcpClient.GetStream();
 
         encoder = new ASCIIEncoding();
-        byte[] buffer = encoder.GetBytes("Hello Client!");
+        //byte[] buffer = encoder.GetBytes("Hello Client!");
 
-        clientStream.Write(buffer, 0, buffer.Length);
-        clientStream.Flush();
+        //clientStream.Write(buffer, 0, buffer.Length);
+        //clientStream.Flush();
 
 
         String xmlSheet;
