@@ -60,7 +60,7 @@ private float lastHitTime;
             lowLife = true;
         }
 
-        if (hud.getHealth() > 20)
+		if (hud.getHealth() > 20 || hud.getHealth()<=0)
         {
             battement.Stop();
             lowLife = false;

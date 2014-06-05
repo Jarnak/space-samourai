@@ -101,10 +101,10 @@ public class GameHandler : MonoBehaviour
         GUILayout.Label("Score :" + myHudHandler.getScore().ToString());
         if (GUILayout.Button("Rejouer", GUILayout.Height(buttonHeight)))
         {	
+			myHudHandler.setHealth(100);
 			GameObject.FindGameObjectWithTag("Player").SendMessage("resetGame");
 			myHudHandler.setScore(0);
             myHudHandler.loseEnergy(150);
-			myHudHandler.setHealth(100);
 			Time.timeScale=1f;
 			isDead = false;
         }
