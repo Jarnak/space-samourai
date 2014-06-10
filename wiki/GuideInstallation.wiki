@@ -35,5 +35,5 @@
 
   * Cliquez sur le bouton "Jouer avec Android"
   * Ouvrez le menu de l'application avec le bouton menu de votre téléphone, et sélectionnez l'option "Configure". Entrez maintenant l'adresse IP et le port qui s'affiche à l'écran de votre ordinateur, puis appuyez sur "Set".
-  * Positionnez maintenant votre téléphone bien à la verticale, l'écran face à vous. Puis ouvrez de nouveau le menu, et sélectionnez "Connect". Si tout ce passe bien, vous devriez apercevoir un message sur votre ordinateur. Sinon, référez vous à la rubrique [Problèmes de connexion].
+  * Positionnez maintenant votre téléphone bien à la verticale, l'écran face à vous. Puis ouvrez de nouveau le menu, et sélectionnez "Connect". Si tout ce passe bien, vous devriez apercevoir un message sur votre ordinateur. Sinon, référez vous à la rubrique [ProblemesDeConnexion].
   * Vous êtes connecté! Lancez le jeu quand vous êtes prêts, en sélectionnant Menu->Start.
