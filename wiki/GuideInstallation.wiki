@@ -7,9 +7,8 @@
 
 = Installer le jeu sous Windows =
 
-  * Dans un premier temps téléchargez l'archive SpaceSamourai.rar : lien à insérer lorsque la version finale sera release.
-  * Ensuite, extraire de l'archive le dossier de jeu correspondant à votre architecture de processeur  : Space_Samouraix86 pour une architecture 32 bits, ou Space_Samouraix64 pour une architecture 64 bits.
-( si vous n'en avez aucune idée veuillez vous référer à : http://www.commentcamarche.net/faq/19107-32-ou-64-bits-comment-savoir ) 
+  * Dans un premier temps téléchargez l'archive SpaceSamourai.rar : https://mega.co.nz/#!XYsTzZCT!n8C1YJb82-tZ2_9NOCOzkEJy4Kq5qnozkuVqPMenpHE .
+  * Ensuite, extraire de l'archive le dossier Space Samourai là ou vous souhaitez installer le jeu.
 
 = Installer l'application Android =
 
